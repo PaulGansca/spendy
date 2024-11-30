@@ -5,7 +5,6 @@ import {
   FlatList,
   Text,
   View,
-  ActivityIndicator,
   Alert,
   Platform,
 } from 'react-native';
@@ -56,13 +55,9 @@ export default function App() {
         Alert.alert('Error', 'Unable to fetch transactions. Please try again.');
       }
     };
-
     fetchTransactions();
-  }, [accessToken, setTransactions]);
+  }, [accessToken, address, setTransactions]);
   console.log(transactions);
-  if (!transactions.length) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
-  }
   return (
     <View style={styles.container}>
       <Text>Daily Spend Goal: {dailySpendGoal}</Text>

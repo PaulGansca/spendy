@@ -284,19 +284,31 @@ app.get('/api/auth', function (request, response, next) {
 
 // Retrieve Transactions for an Item
 // https://plaid.com/docs/#transactions
-// Retrieve Transactions for an Item (GET request)
-// Retrieve Transactions for an Item (GET request)
 app.get('/api/transactions', async function (req, res, next) {
   try {
-    const accessToken = req.query.access_token || ACCESS_TOKEN; // Retrieve from query parameters
+    const accessToken = req.query.access_token || ACCESS_TOKEN;
     if (!accessToken) {
       return res.status(400).json({ error: 'Access token is required.' });
     }
 
+    const today = moment();
+    const startOfWeek = today.startOf('week').toDate();
+    const endOfWeek = today.endOf('week').toDate();
+
+    let startDate = moment(startOfWeek).startOf('month').toDate();
+    let endDate = moment(endOfWeek).endOf('month').toDate();
+
+    const lastMondayOfPrevMonth = moment(today)
+      .subtract(1, 'month')
+      .endOf('month')
+      .startOf('week')
+      .toDate();
+    if (moment(today).startOf('week').month() !== today.month()) {
+      startDate = lastMondayOfPrevMonth;
+    }
+
     let cursor = null;
-    let added = [];
-    let modified = [];
-    let removed = [];
+    let transactions = [];
     let hasMore = true;
 
     while (hasMore) {
@@ -307,29 +319,21 @@ app.get('/api/transactions', async function (req, res, next) {
 
       const transactionsResponse =
         await client.transactionsSync(transactionsRequest);
-      const {
-        added: newAdded,
-        modified: newModified,
-        removed: newRemoved,
-        has_more,
-        next_cursor,
-      } = transactionsResponse.data;
+      const { added, has_more, next_cursor } = transactionsResponse.data;
 
-      added = added.concat(newAdded);
-      modified = modified.concat(newModified);
-      removed = removed.concat(newRemoved);
+      const filteredTransactions = added.filter((txn) =>
+        moment(txn.date).isBetween(startDate, endDate, null, '[]'),
+      );
+
+      transactions = transactions.concat(filteredTransactions);
       cursor = next_cursor;
       hasMore = has_more;
     }
 
-    // Sort and return the 8 most recent transactions
-    const compareTxnsByDateAscending = (a, b) =>
-      (a.date > b.date) - (a.date < b.date);
-    const recentlyAdded = [...added].sort(compareTxnsByDateAscending).slice(-8);
+    transactions.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort transactions by date in descending order
 
-    res.json({ transactions: recentlyAdded }); // Use "transactions" key
+    res.json({ transactions });
   } catch (error) {
-    console.error('Error retrieving transactions:', error);
     next(error);
   }
 });

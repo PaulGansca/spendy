@@ -8,14 +8,9 @@ type PlaidState = {
   isItemAccess: boolean;
   linkSuccess: boolean;
   transactions: PlaidTransaction[];
-  setPlaidData: (data: {
-    accessToken: string;
-    itemId: string;
-    expiration: string;
-  }) => void;
+  setPlaidData: (data: { accessToken: string; itemId: string }) => void;
   setTransactions: (transactions: PlaidTransaction[]) => void;
   resetPlaidState: () => void;
-  clearExpiredData: () => void; // Function to clear expired data
 };
 
 export interface PlaidTransaction {
@@ -84,6 +79,7 @@ export const usePlaidStore = create(
           accessToken: data.accessToken,
           itemId: data.itemId,
           isItemAccess: true,
+          linkSuccess: true,
         }),
       setTransactions: (transactions) => set({ transactions }),
       resetPlaidState: () =>
@@ -94,28 +90,7 @@ export const usePlaidStore = create(
           linkSuccess: false,
           transactions: [],
         }),
-      clearExpiredData: () => {
-        set({
-          accessToken: null,
-          itemId: null,
-          isItemAccess: false,
-          linkSuccess: false,
-          transactions: [],
-        });
-        AsyncStorage.removeItem('plaid-store');
-      },
     }),
     { name: 'plaid-store', storage: createJSONStorage(() => AsyncStorage) },
   ),
 );
-
-// Utility function to check expiration and reset store if expired
-export const checkPlaidExpiration = (expiration: string) => {
-  const expirationDate = new Date(expiration);
-  const now = new Date();
-
-  if (now > expirationDate) {
-    // If the expiration date has passed, clear the store
-    usePlaidStore.getState().clearExpiredData();
-  }
-};

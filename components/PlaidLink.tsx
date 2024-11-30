@@ -21,7 +21,7 @@ import { usePlaidStore } from '@/store/plaidStore';
 
 export const PlaidLinkComponent = () => {
   const [linkToken, setLinkToken] = useState<string | null>(null);
-  const { setPlaidData } = usePlaidStore();
+  const { setPlaidData, linkSuccess } = usePlaidStore();
   const address = Platform.OS === 'ios' ? 'localhost' : '10.0.2.2';
 
   // Fetch the link token from your backend
@@ -60,7 +60,6 @@ export const PlaidLinkComponent = () => {
           setPlaidData({
             accessToken: data.access_token,
             itemId: data.item_id,
-            expiration: data.expiration,
           });
           Alert.alert('Success', 'Bank account linked successfully!');
         } else {
@@ -113,7 +112,11 @@ export const PlaidLinkComponent = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Link Your Bank Account</Text>
-      <Button title="Open Plaid Link" onPress={handleOpenLink} />
+      <Button
+        disabled={linkSuccess}
+        title="Open Plaid Link"
+        onPress={handleOpenLink}
+      />
     </View>
   );
 };

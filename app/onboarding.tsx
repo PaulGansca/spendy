@@ -6,11 +6,13 @@ import { useUserStore } from '@/store/userStore';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { PlaidLinkComponent } from '@/components/PlaidLink';
+import { usePlaidStore } from '@/store/plaidStore';
 
 export default function OnboardingScreen() {
   const router = useRouter();
   const toggleHasOnboarded = useUserStore((state) => state.toggleHasOnboarded);
   const setSpendGoals = useUserStore((state) => state.setSpendGoals);
+  const isPlaidLinkSuccess = usePlaidStore((state) => state.linkSuccess);
 
   const [dailySpendGoal, setDailySpendGoal] = useState('');
   const [weeklySpendGoal, setWeeklySpendGoal] = useState('');
@@ -53,7 +55,11 @@ export default function OnboardingScreen() {
         keyboardType="number-pad"
       />
       <PlaidLinkComponent />
-      <Button title="Complete Onboarding" onPress={handlePress} />
+      <Button
+        disabled={!isPlaidLinkSuccess}
+        title="Complete Onboarding"
+        onPress={handlePress}
+      />
     </KeyboardAwareScrollView>
   );
 }
