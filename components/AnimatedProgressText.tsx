@@ -8,7 +8,7 @@ const { width } = Dimensions.get('window');
 interface ProgressTextProps {
   spent: number;
   goal: number;
-  duration: number; // Animation duration in milliseconds
+  duration: number;
 }
 
 const ProgressText: React.FC<ProgressTextProps> = ({
@@ -16,12 +16,17 @@ const ProgressText: React.FC<ProgressTextProps> = ({
   goal,
   duration,
 }) => {
-  const [progress, setProgress] = useState(0); // Track animation progress
-  const targetProgress = (spent / goal) * 100; // Allow progress to go beyond 100%
+  const [progress, setProgress] = useState(0);
+  const targetProgress = goal > 0 ? (spent / goal) * 100 : 0;
 
   useEffect(() => {
+    if (goal === 0 || targetProgress === 0) {
+      setProgress(0);
+      return;
+    }
+
     let animationFrame: number;
-    const totalFrames = Math.round((duration / 1000) * 60); // Assuming 60 FPS
+    const totalFrames = Math.round((duration / 1000) * 60);
     const increment = targetProgress / totalFrames;
 
     const animate = () => {
@@ -37,8 +42,9 @@ const ProgressText: React.FC<ProgressTextProps> = ({
 
     animate();
 
-    return () => cancelAnimationFrame(animationFrame); // Clean up on unmount
-  }, [targetProgress, duration]);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [targetProgress, duration, goal]);
+
   const center = vec(width / 2, useHeaderHeight() + 32);
 
   return (

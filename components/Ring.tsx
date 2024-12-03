@@ -144,7 +144,7 @@ export const Ring = ({
     if (startAnimation) {
       trim.value = withTiming(1, { duration });
     } else {
-      trim.value = 0; // Reset progress if animation is not active
+      trim.value = 0;
     }
   }, [startAnimation, trim, duration]);
 

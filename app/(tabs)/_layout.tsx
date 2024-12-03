@@ -1,5 +1,5 @@
 import { Redirect, Tabs } from 'expo-router';
-import Entypo from '@expo/vector-icons/Entypo';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import Feather from '@expo/vector-icons/Feather';
 import { theme } from '@/theme';
 import { useUserStore } from '@/store/userStore';
@@ -21,7 +21,11 @@ export default function Layout() {
           title: 'Home',
           tabBarShowLabel: false,
           tabBarIcon: ({ size, color }) => (
-            <Entypo name="leaf" size={size} color={color} />
+            <FontAwesome6
+              name="money-bill-trend-up"
+              size={size}
+              color={color}
+            />
           ),
         }}
       />

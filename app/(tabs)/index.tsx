@@ -1,171 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import {
-  startOfWeek,
-  endOfWeek,
-  startOfMonth,
-  endOfMonth,
-  isSameDay,
-  isWithinInterval,
-  parseISO,
-} from 'date-fns';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import {
   StyleSheet,
   FlatList,
   Text,
   View,
-  Alert,
-  Platform,
   TouchableOpacity,
 } from 'react-native';
-import { usePlaidStore, PlaidTransaction } from '@/store/plaidStore';
-import { useUserStore } from '@/store/userStore';
 import { TransactionListItem } from '@/components/TransactionListItem';
 import { Rings, RING_SIZE } from '@/components/Rings';
 import ProgressText from '@/components/AnimatedProgressText';
+import { useFetchTransactions } from '@/hooks/useFetchTransactions';
+import { useFilteredTransactions } from '@/hooks/useFilteredTransactions';
 
 export default function App() {
-  const { dailySpendGoal, weeklySpendGoal, monthlySpendGoal } = useUserStore(
-    (state) => state,
-  );
-  const { accessToken, transactions, setTransactions } = usePlaidStore();
-  const address = Platform.OS === 'ios' ? 'localhost' : '10.0.2.2';
+  useFetchTransactions();
 
   const [selectedPeriod, setSelectedPeriod] = useState<
     'daily' | 'weekly' | 'monthly'
   >('daily');
-  const [spent, setSpent] = useState(0);
-  const [goal, setGoal] = useState<number>(Number(dailySpendGoal));
-  const [filteredTransactions, setFilteredTransactions] = useState<
-    PlaidTransaction[]
-  >([]);
-
+  const { filteredTransactions, spent, goal } =
+    useFilteredTransactions(selectedPeriod);
   const [animationStarted, setAnimationStarted] = useState(true);
 
-  useEffect(() => {
-    const fetchTransactions = async () => {
-      if (!accessToken) {
-        console.error('Access token is missing.');
-        return;
-      }
-
-      try {
-        const response = await fetch(
-          `http://${address}:8000/api/transactions?access_token=${accessToken}`,
-          {
-            method: 'GET',
-          },
-        );
-
-        if (!response.ok) {
-          console.error('Failed to fetch transactions:', response.statusText);
-          Alert.alert(
-            'Error',
-            'Unable to fetch transactions. Please try again.',
-          );
-          return;
-        }
-
-        const data = await response.json();
-        if (data.transactions) {
-          setTransactions(data.transactions); // Matches the updated key
-        } else {
-          console.error('Invalid response structure:', data);
-          Alert.alert('Error', 'No transactions found. Please try again.');
-        }
-      } catch (error) {
-        console.error('Error fetching transactions:', error);
-        Alert.alert('Error', 'Unable to fetch transactions. Please try again.');
-      }
-    };
-    fetchTransactions();
-  }, [accessToken, address, setTransactions]);
-
-  useEffect(() => {
-    const today = new Date();
-    const startOfThisWeek = startOfWeek(today, { weekStartsOn: 1 });
-    const endOfThisWeek = endOfWeek(today, { weekStartsOn: 1 });
-    const startOfThisMonth = startOfMonth(today);
-    const endOfThisMonth = endOfMonth(today);
-
-    // Handle weeks spanning two months
-    const startOfPrevMonth = startOfMonth(startOfThisWeek);
-    const lastDayOfPrevMonth = endOfMonth(startOfThisWeek);
-
-    const weeklyStart =
-      startOfThisWeek < startOfThisMonth ? startOfPrevMonth : startOfThisWeek;
-    const weeklyEnd =
-      endOfThisWeek > endOfThisMonth ? lastDayOfPrevMonth : endOfThisWeek;
-
-    const todayTxns = transactions.filter((transaction) =>
-      isSameDay(parseISO(transaction.date), today),
-    );
-
-    const weekTxns = transactions.filter((txn) =>
-      isWithinInterval(parseISO(txn.date), {
-        start: weeklyStart,
-        end: weeklyEnd,
-      }),
-    );
-
-    const monthTxns = transactions.filter((transaction) =>
-      isWithinInterval(parseISO(transaction.date), {
-        start: startOfThisMonth,
-        end: endOfThisMonth,
-      }),
-    );
-
-    // Handle the selected period change
-    let filteredTransactions = [];
-    let periodGoal = 0;
-
-    switch (selectedPeriod) {
-      case 'daily':
-        filteredTransactions = todayTxns;
-        periodGoal = Number(dailySpendGoal); // Ensure it's a number
-        break;
-      case 'weekly':
-        filteredTransactions = weekTxns;
-        periodGoal = Number(weeklySpendGoal); // Ensure it's a number
-        break;
-      case 'monthly':
-        filteredTransactions = monthTxns;
-        periodGoal = Number(monthlySpendGoal); // Ensure it's a number
-        break;
-    }
-
-    // Sum the amounts for the selected period
-    const totalSpent = Math.abs(
-      filteredTransactions.reduce((sum, txn) => sum + txn.amount, 0),
-    );
-
-    setFilteredTransactions(filteredTransactions); // Store the filtered transactions
-    setSpent(totalSpent);
-    setGoal(periodGoal); // Set the correct goal for the selected period
-  }, [
-    transactions,
-    selectedPeriod,
-    dailySpendGoal,
-    weeklySpendGoal,
-    monthlySpendGoal,
-  ]);
-
   const duration =
-    (spent / goal < 0.5 ? 800 : 2000) + Math.ceil(spent / goal) * 1000;
+    (spent / goal < 0.4 ? 500 : 2000) + Math.ceil(spent / goal) * 1000;
 
   const handleSelectPeriod = (period: 'daily' | 'weekly' | 'monthly') => {
     setSelectedPeriod(period);
-    setAnimationStarted(false); // Reset animation before starting new selection
-    setTimeout(() => {
-      setAnimationStarted(true); // Start animation after the period change
-    }, 50); // Short delay to ensure re-render
+    setAnimationStarted(false);
+    setTimeout(() => setAnimationStarted(true), 50);
   };
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-
-      {/* Period Selectable Badges */}
       <View style={styles.badgeContainer}>
         {['daily', 'weekly', 'monthly'].map((period) => (
           <TouchableOpacity
@@ -184,8 +53,6 @@ export default function App() {
           </TouchableOpacity>
         ))}
       </View>
-
-      {/* Rings and ProgressText */}
       <View style={styles.chartContainer}>
         <Rings
           goal={goal}

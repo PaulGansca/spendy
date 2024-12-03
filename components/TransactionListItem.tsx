@@ -1,24 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { PlaidTransaction } from '@/store/plaidStore';
-
-const { width } = Dimensions.get('window'); // Get screen width
 
 export const TransactionListItem = ({ item }: { item: PlaidTransaction }) => {
   return (
     <View style={styles.transaction}>
-      {/* Logo */}
       <Image source={{ uri: item.logo_url || undefined }} style={styles.logo} />
-
-      {/* Transaction Details */}
       <View style={styles.details}>
         <Text numberOfLines={1} style={styles.transactionName}>
           {item.name}
         </Text>
         <Text style={styles.transactionDate}>{item.date}</Text>
       </View>
-
-      {/* Transaction Amount */}
       <Text style={styles.transactionAmount}>${item.amount.toFixed(2)}</Text>
     </View>
   );

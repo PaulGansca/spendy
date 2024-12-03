@@ -19,12 +19,12 @@ export const Rings = ({
   duration,
   spent,
   goal,
-  startAnimation, // New prop to control animation start
+  startAnimation,
 }: {
   duration: number;
   spent: number;
   goal: number;
-  startAnimation: boolean; // Add this prop
+  startAnimation: boolean;
 }) => {
   const center = vec(width / 2, useHeaderHeight() + 32);
 
@@ -49,7 +49,7 @@ export const Rings = ({
           center={center}
           strokeWidth={strokeWidth}
           duration={duration}
-          startAnimation={startAnimation} // Pass the startAnimation prop
+          startAnimation={startAnimation}
         />
       ))}
     </Canvas>
