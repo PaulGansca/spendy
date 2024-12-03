@@ -16,10 +16,13 @@ import {
   View,
   Alert,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 import { usePlaidStore, PlaidTransaction } from '@/store/plaidStore';
 import { useUserStore } from '@/store/userStore';
 import { TransactionListItem } from '@/components/TransactionListItem';
+import { Rings, RING_SIZE } from '@/components/Rings';
+import ProgressText from '@/components/AnimatedProgressText';
 
 export default function App() {
   const { dailySpendGoal, weeklySpendGoal, monthlySpendGoal } = useUserStore(
@@ -27,6 +30,17 @@ export default function App() {
   );
   const { accessToken, transactions, setTransactions } = usePlaidStore();
   const address = Platform.OS === 'ios' ? 'localhost' : '10.0.2.2';
+
+  const [selectedPeriod, setSelectedPeriod] = useState<
+    'daily' | 'weekly' | 'monthly'
+  >('daily');
+  const [spent, setSpent] = useState(0);
+  const [goal, setGoal] = useState<number>(Number(dailySpendGoal));
+  const [filteredTransactions, setFilteredTransactions] = useState<
+    PlaidTransaction[]
+  >([]);
+
+  const [animationStarted, setAnimationStarted] = useState(true);
 
   useEffect(() => {
     const fetchTransactions = async () => {
@@ -67,16 +81,6 @@ export default function App() {
     fetchTransactions();
   }, [accessToken, address, setTransactions]);
 
-  const [todaysTransactions, setTodaysTransactions] = useState<
-    PlaidTransaction[]
-  >([]);
-  const [weeklyTransactions, setWeeklyTransactions] = useState<
-    PlaidTransaction[]
-  >([]);
-  const [monthlyTransactions, setMonthlyTransactions] = useState<
-    PlaidTransaction[]
-  >([]);
-
   useEffect(() => {
     const today = new Date();
     const startOfThisWeek = startOfWeek(today, { weekStartsOn: 1 });
@@ -111,55 +115,103 @@ export default function App() {
       }),
     );
 
-    setTodaysTransactions(todayTxns);
-    setWeeklyTransactions(weekTxns);
-    setMonthlyTransactions(monthTxns);
-  }, [transactions]);
+    // Handle the selected period change
+    let filteredTransactions = [];
+    let periodGoal = 0;
+
+    switch (selectedPeriod) {
+      case 'daily':
+        filteredTransactions = todayTxns;
+        periodGoal = Number(dailySpendGoal); // Ensure it's a number
+        break;
+      case 'weekly':
+        filteredTransactions = weekTxns;
+        periodGoal = Number(weeklySpendGoal); // Ensure it's a number
+        break;
+      case 'monthly':
+        filteredTransactions = monthTxns;
+        periodGoal = Number(monthlySpendGoal); // Ensure it's a number
+        break;
+    }
+
+    // Sum the amounts for the selected period
+    const totalSpent = Math.abs(
+      filteredTransactions.reduce((sum, txn) => sum + txn.amount, 0),
+    );
+
+    setFilteredTransactions(filteredTransactions); // Store the filtered transactions
+    setSpent(totalSpent);
+    setGoal(periodGoal); // Set the correct goal for the selected period
+  }, [
+    transactions,
+    selectedPeriod,
+    dailySpendGoal,
+    weeklySpendGoal,
+    monthlySpendGoal,
+  ]);
+
+  const duration =
+    (spent / goal < 0.5 ? 800 : 2000) + Math.ceil(spent / goal) * 1000;
+
+  const handleSelectPeriod = (period: 'daily' | 'weekly' | 'monthly') => {
+    setSelectedPeriod(period);
+    setAnimationStarted(false); // Reset animation before starting new selection
+    setTimeout(() => {
+      setAnimationStarted(true); // Start animation after the period change
+    }, 50); // Short delay to ensure re-render
+  };
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
 
-      <View style={styles.goalsContainer}>
-        <Text style={styles.goalText}>Daily Spend Goal: ${dailySpendGoal}</Text>
-        <Text style={styles.goalText}>
-          Weekly Spend Goal: ${weeklySpendGoal}
-        </Text>
-        <Text style={styles.goalText}>
-          Monthly Spend Goal: ${monthlySpendGoal}
-        </Text>
+      {/* Period Selectable Badges */}
+      <View style={styles.badgeContainer}>
+        {['daily', 'weekly', 'monthly'].map((period) => (
+          <TouchableOpacity
+            key={period}
+            style={[
+              styles.badge,
+              selectedPeriod === period && styles.selectedBadge,
+            ]}
+            onPress={() =>
+              handleSelectPeriod(period as 'daily' | 'weekly' | 'monthly')
+            }
+          >
+            <Text style={styles.badgeText}>
+              {period.charAt(0).toUpperCase() + period.slice(1)}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </View>
 
-      <View style={styles.listsContainer}>
-        <Text style={styles.header}>Today's Transactions</Text>
-        <FlatList
-          data={todaysTransactions}
-          keyExtractor={(item) => item.transaction_id}
-          renderItem={({ item }) => <TransactionListItem item={item} />}
-          ListEmptyComponent={
-            <Text style={styles.emptyText}>No transactions today</Text>
-          }
+      {/* Rings and ProgressText */}
+      <View style={styles.chartContainer}>
+        <Rings
+          goal={goal}
+          spent={spent}
+          duration={duration}
+          startAnimation={animationStarted}
         />
-
-        <Text style={styles.header}>This Week's Transactions</Text>
-        <FlatList
-          data={weeklyTransactions}
-          keyExtractor={(item) => item.transaction_id}
-          renderItem={({ item }) => <TransactionListItem item={item} />}
-          ListEmptyComponent={
-            <Text style={styles.emptyText}>No transactions this week</Text>
-          }
-        />
-
-        <Text style={styles.header}>This Month's Transactions</Text>
-        <FlatList
-          data={monthlyTransactions}
-          keyExtractor={(item) => item.transaction_id}
-          renderItem={({ item }) => <TransactionListItem item={item} />}
-          ListEmptyComponent={
-            <Text style={styles.emptyText}>No transactions this month</Text>
-          }
-        />
+        <ProgressText duration={duration} spent={spent} goal={goal} />
+      </View>
+      <View style={styles.contentContainer}>
+        <View style={styles.listsContainer}>
+          <Text style={styles.header}>
+            {selectedPeriod.charAt(0).toUpperCase() + selectedPeriod.slice(1)}'s
+            Transactions
+          </Text>
+          <FlatList
+            data={filteredTransactions}
+            keyExtractor={(item) => item.transaction_id}
+            renderItem={({ item }) => <TransactionListItem item={item} />}
+            ListEmptyComponent={
+              <Text style={styles.emptyText}>
+                No transactions this {selectedPeriod}
+              </Text>
+            }
+          />
+        </View>
       </View>
     </View>
   );
@@ -169,23 +221,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
   },
-  goalsContainer: {
-    backgroundColor: '#fff',
-    padding: 16,
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
+  badgeContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 16,
+    marginBottom: 4,
+    gap: 16,
   },
-  goalText: {
+  badge: {
+    backgroundColor: '#ddd',
+    padding: 8,
+    borderRadius: 12,
+  },
+  selectedBadge: {
+    backgroundColor: '#388e3c',
+  },
+  badgeText: {
+    color: '#fff',
     fontSize: 16,
-    fontWeight: '500',
-    color: '#333',
-    marginVertical: 4,
+  },
+  contentContainer: { paddingHorizontal: 16, paddingVertical: 8, flex: 1 },
+  chartContainer: {
+    height: RING_SIZE + 14,
+    position: 'relative',
   },
   listsContainer: {
     flex: 1,
