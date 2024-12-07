@@ -14,7 +14,12 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.paulg129.spendy"
+      "bundleIdentifier": "com.paulg129.spendy",
+      "entitlements": {
+        "com.apple.security.application-groups": [
+          "group.com.paulg129.spendy.widget"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -27,7 +32,9 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      ["expo-build-properties", { "android": { "kotlinVersion": "1.8.22" } }],
+      ["./app.plugin", { "devTeamId": "ABC123XYZ9" }]
     ]
   }
 }
