@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import {
   StyleSheet,
@@ -6,15 +6,44 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import { TransactionListItem } from '@/components/TransactionListItem';
 import { Rings, RING_SIZE } from '@/components/Rings';
 import ProgressText from '@/components/AnimatedProgressText';
 import { useFetchTransactions } from '@/hooks/useFetchTransactions';
 import { useFilteredTransactions } from '@/hooks/useFilteredTransactions';
+import { getItem, reloadAll, setItem } from '@/modules/widget';
+
+const GROUP_NAME = 'group.com.paulg129.spendy.widget';
+
+const getSharedData = getItem(GROUP_NAME);
+const setSharedData = setItem(GROUP_NAME);
+
+function Button({ onPress, title }: any) {
+  return (
+    <Pressable style={{}} onPress={onPress}>
+      <Text style={{}}>{title}</Text>
+    </Pressable>
+  );
+}
 
 export default function App() {
+  const [value, setValue] = useState(getSharedData(GROUP_NAME) ?? '');
   useFetchTransactions();
+  useEffect(() => {
+    setSharedData('savedData', value);
+    reloadAll();
+  }, [value]);
+
+  const onPress = () => {
+    console.log('SHOOT');
+    setValue(`${spent} $ / ${goal} $`);
+  };
+
+  const clear = () => {
+    setValue('');
+  };
 
   const [selectedPeriod, setSelectedPeriod] = useState<
     'daily' | 'weekly' | 'monthly'
@@ -63,6 +92,10 @@ export default function App() {
         <ProgressText duration={duration} spent={spent} goal={goal} />
       </View>
       <View style={styles.contentContainer}>
+        <View>
+          <Button onPress={onPress} title="Set value" />
+          <Button onPress={clear} title="Clear" />
+        </View>
         <View style={styles.listsContainer}>
           <Text style={styles.header}>
             {selectedPeriod.charAt(0).toUpperCase() + selectedPeriod.slice(1)}'s

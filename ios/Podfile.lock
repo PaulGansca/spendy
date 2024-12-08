@@ -1829,6 +1829,8 @@ PODS:
     - React-logger (= 0.76.3)
     - React-perflogger (= 0.76.3)
     - React-utils (= 0.76.3)
+  - ReactNativeWidgetSync (0.1.2):
+    - ExpoModulesCore
   - RNCAsyncStorage (1.23.1):
     - React-Core
   - RNGestureHandler (2.21.2):
@@ -1964,6 +1966,8 @@ PODS:
   - RNSVG (15.8.0):
     - React-Core
   - SocketRocket (0.7.1)
+  - Widget (1.0.0):
+    - ExpoModulesCore
   - Yoga (0.0.0)
   - ZXingObjC/Core (3.6.9)
   - ZXingObjC/OneD (3.6.9):
@@ -2064,11 +2068,13 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - ReactNativeWidgetSync (from `../node_modules/react-native-widget-sync/ios`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - Widget (from `../modules/widget/ios`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -2259,6 +2265,8 @@ EXTERNAL SOURCES:
     :path: build/generated/ios
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  ReactNativeWidgetSync:
+    :path: "../node_modules/react-native-widget-sync/ios"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNGestureHandler:
@@ -2269,6 +2277,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  Widget:
+    :path: "../modules/widget/ios"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -2364,12 +2374,14 @@ SPEC CHECKSUMS:
   React-utils: 2bcaf4f4dfe361344bce2fae428603d518488630
   ReactCodegen: ae99a130606068ed40d1d9c0d5f25fda142a0647
   ReactCommon: 89c87b343deacc8610b099ac764848f0ce937e3e
+  ReactNativeWidgetSync: 6605ab3454d330cc7712e8f9ae2ab95065115be9
   RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
   RNGestureHandler: aa9690789023c9be8f06aa90e10ce637ea788f4d
   RNReanimated: 365e7d6c1ed443cf8e1b7ba4f0b15dd9f82f052a
   RNScreens: e6f9bc3a41be76af2ba0a815ea299a0000b1c838
   RNSVG: 8b1a777d54096b8c2a0fd38fc9d5a454332bbb4d
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
+  Widget: b1386380d74b755a21d244c2b1899ed993a025bd
   Yoga: f6dc1b6029519815d5516a1241821c6a9074af6d
   ZXingObjC: 8898711ab495761b2dbbdec76d90164a6d7e14c5
 

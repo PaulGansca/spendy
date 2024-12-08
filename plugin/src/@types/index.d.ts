@@ -1,5 +1,5 @@
-declare module "xcode"
+declare module "xcode";
 
 type WithWidgetProps = {
-  devTeamId: string
-}
+  devTeamId: string;
+};

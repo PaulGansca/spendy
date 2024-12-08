@@ -7,40 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		104A3BAA7D7946D2B6700388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 893F4AA1021D44C8B549D15E /* Assets.xcassets */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1798B7015F624F48B272BC49 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B5446FF5A4E7DA7054C0E /* noop-file.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		4B2D02D1DB66D4B22E4EA39F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A372294C7D34A6ACE19C0BE8 /* PrivacyInfo.xcprivacy */; };
-		676E830515784E9392D24F63 /* widget.appex in Copy Files */ = {isa = PBXBuildFile; fileRef = E43AAD7C998C412EB702A653 /* widget.appex */; };
-		6C82F8C29BD946C9BE9C8E4D /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A84CB047AE4E6B809990CC /* noop-file.swift */; };
-		82CECEA4EBA346DEB402F5AD /* widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E890F31E0483D94E0741C /* widget.swift */; };
-		951ECD1823B142F5813868FA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C90E1DB60740809C7E6D40 /* WidgetKit.framework */; };
+		57B281434F977E48E69BDA37 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 2871308B7AAFD7A9295155C7 /* PrivacyInfo.xcprivacy */; };
+		76764AB2281A44C8A62929FC /* widget.appex in Copy Files */ = {isa = PBXBuildFile; fileRef = DD2A42A6B9B24659848AD40C /* widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96905EF65AED1B983A6B3ABC /* libPods-spendy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-spendy.a */; };
-		AD86AA1CB9D641C6908D95BE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693D9BF1F61F4DE6A3B27BF5 /* SwiftUI.framework */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		DABC6223FC0E4EDBAE403931 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 638E331BBED64661AB44D2AF /* Assets.xcassets */; };
+		D50F5FCB5D9248F09498904A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C6728E7B624B01B7F513DB /* SwiftUI.framework */; };
+		E615C5CD50604A0AA552166D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DC7A97CF1745C8A148EB35 /* WidgetKit.framework */; };
+		FED97532315A4EA39270F104 /* widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28A7EDBB027414698B35FC6 /* widget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3D94882E61474F1287DA230F /* PBXContainerItemProxy */ = {
+		20F7B3BFBB4D4469939E9DE8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FEE5444E364E405FBE40B952;
+			remoteGlobalIDString = CFB1C52D700347D2B0A64517;
 			remoteInfo = widget;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7DFBE89799604E27882C91D2 /* Copy Files */ = {
+		A8899C0B87B641E79A107877 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				676E830515784E9392D24F63 /* widget.appex in Copy Files */,
+				76764AB2281A44C8A62929FC /* widget.appex in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,26 +48,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E59218A0FCC427B99018168 /* spendy-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "spendy-Bridging-Header.h"; path = "spendy/spendy-Bridging-Header.h"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* spendy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spendy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = spendy/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = spendy/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = spendy/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = spendy/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = spendy/main.m; sourceTree = "<group>"; };
+		25C6728E7B624B01B7F513DB /* SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		2871308B7AAFD7A9295155C7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = spendy/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		434B5446FF5A4E7DA7054C0E /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "spendy/noop-file.swift"; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-spendy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-spendy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		60C90E1DB60740809C7E6D40 /* WidgetKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		638E331BBED64661AB44D2AF /* Assets.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Assets.xcassets; sourceTree = "<group>"; };
-		654EA44F44E242EDAE1783AA /* Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = "<group>"; };
-		693D9BF1F61F4DE6A3B27BF5 /* SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		6C2E3173556A471DD304B334 /* Pods-spendy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spendy.debug.xcconfig"; path = "Target Support Files/Pods-spendy/Pods-spendy.debug.xcconfig"; sourceTree = "<group>"; };
-		7613BE91A0AC4373909C34B5 /* spendy-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "spendy-Bridging-Header.h"; path = "spendy/spendy-Bridging-Header.h"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-spendy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spendy.release.xcconfig"; path = "Target Support Files/Pods-spendy/Pods-spendy.release.xcconfig"; sourceTree = "<group>"; };
-		95A84CB047AE4E6B809990CC /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "spendy/noop-file.swift"; sourceTree = "<group>"; };
-		A372294C7D34A6ACE19C0BE8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = spendy/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		893F4AA1021D44C8B549D15E /* Assets.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = spendy/SplashScreen.storyboard; sourceTree = "<group>"; };
+		B0DC7A97CF1745C8A148EB35 /* WidgetKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B28A7EDBB027414698B35FC6 /* widget.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = widget.swift; path = widget.swift; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		C26E890F31E0483D94E0741C /* widget.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = widget.swift; path = widget.swift; sourceTree = "<group>"; };
-		E43AAD7C998C412EB702A653 /* widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = undefined; name = widget.appex; path = widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD2A42A6B9B24659848AD40C /* widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = undefined; name = widget.appex; path = widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA970E62ECAA44B0AF717FAD /* widget.entitlements */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = text.plist.entitlements; name = widget.entitlements; path = widget.entitlements; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-spendy/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,12 +81,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4B8482C9FBE542579C6F9385 /* Frameworks */ = {
+		6443963B1F324C20949BBD3D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD86AA1CB9D641C6908D95BE /* SwiftUI.framework in Frameworks */,
-				951ECD1823B142F5813868FA /* WidgetKit.framework in Frameworks */,
+				D50F5FCB5D9248F09498904A /* SwiftUI.framework in Frameworks */,
+				E615C5CD50604A0AA552166D /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,9 +103,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				95A84CB047AE4E6B809990CC /* noop-file.swift */,
-				7613BE91A0AC4373909C34B5 /* spendy-Bridging-Header.h */,
-				A372294C7D34A6ACE19C0BE8 /* PrivacyInfo.xcprivacy */,
+				434B5446FF5A4E7DA7054C0E /* noop-file.swift */,
+				0E59218A0FCC427B99018168 /* spendy-Bridging-Header.h */,
+				2871308B7AAFD7A9295155C7 /* PrivacyInfo.xcprivacy */,
 			);
 			name = spendy;
 			sourceTree = "<group>";
@@ -115,16 +115,18 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-spendy.a */,
+				B0DC7A97CF1745C8A148EB35 /* WidgetKit.framework */,
+				25C6728E7B624B01B7F513DB /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		67B430A886F9478491EEEFBA /* widget */ = {
+		7832998F62A0472C8538C4C1 /* widget */ = {
 			isa = PBXGroup;
 			children = (
-				638E331BBED64661AB44D2AF /* Assets.xcassets */,
-				654EA44F44E242EDAE1783AA /* Info.plist */,
-				C26E890F31E0483D94E0741C /* widget.swift */,
+				893F4AA1021D44C8B549D15E /* Assets.xcassets */,
+				B28A7EDBB027414698B35FC6 /* widget.swift */,
+				EA970E62ECAA44B0AF717FAD /* widget.entitlements */,
 			);
 			name = widget;
 			path = widget;
@@ -146,7 +148,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
 				D7E4C46ADA2E9064B798F356 /* ExpoModulesProviders */,
-				67B430A886F9478491EEEFBA /* widget */,
+				7832998F62A0472C8538C4C1 /* widget */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -157,7 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* spendy.app */,
-				E43AAD7C998C412EB702A653 /* widget.appex */,
+				DD2A42A6B9B24659848AD40C /* widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,7 +186,6 @@
 			children = (
 				6C2E3173556A471DD304B334 /* Pods-spendy.debug.xcconfig */,
 				7A4D352CD337FB3A3BF06240 /* Pods-spendy.release.xcconfig */,
-				67B430A886F9478491EEEFBA /* widget */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -205,32 +206,32 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "spendy" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				76FE0A9F51CEC08A7E89BCC7 /* [Expo] Configure project */,
+				4877C04A6EC5CF9B1A15E570 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				7DFBE89799604E27882C91D2 /* Copy Files */,
-				D32CD44F7F773ADFEBA2F101 /* [CP] Embed Pods Frameworks */,
+				A8899C0B87B641E79A107877 /* Copy Files */,
+				CCB70A69CFB636EF124F5313 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				210C3E82FC9A4F1F9206E1B1 /* PBXTargetDependency */,
+				5981029F418742C19BBE40B3 /* PBXTargetDependency */,
 			);
 			name = spendy;
 			productName = spendy;
 			productReference = 13B07F961A680F5B00A75B9A /* spendy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FEE5444E364E405FBE40B952 /* widget */ = {
+		CFB1C52D700347D2B0A64517 /* widget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6AB8AB4AAB924121831581CA /* Build configuration list for PBXNativeTarget "widget" */;
+			buildConfigurationList = 6A4F41E46C904F799879FB8B /* Build configuration list for PBXNativeTarget "widget" */;
 			buildPhases = (
-				14CA7B792BFF4F12B229488C /* Sources */,
-				4B8482C9FBE542579C6F9385 /* Frameworks */,
-				9E5A35485D9248599C84B056 /* Resources */,
+				4F23065B13BC4E0DBFE39E9A /* Sources */,
+				6443963B1F324C20949BBD3D /* Frameworks */,
+				412990CAF30040D6A3B5E361 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -238,7 +239,7 @@
 			);
 			name = widget;
 			productName = widget;
-			productReference = E43AAD7C998C412EB702A653 /* widget.appex */;
+			productReference = DD2A42A6B9B24659848AD40C /* widget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -247,10 +248,15 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1250;
+					};
+					CFB1C52D700347D2B0A64517 = {
+						CreatedOnToolsVersion = 13.4.1;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -268,7 +274,7 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* spendy */,
-				FEE5444E364E405FBE40B952 /* widget */,
+				CFB1C52D700347D2B0A64517 /* widget */,
 			);
 		};
 /* End PBXProject section */
@@ -281,15 +287,15 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				4B2D02D1DB66D4B22E4EA39F /* PrivacyInfo.xcprivacy in Resources */,
+				57B281434F977E48E69BDA37 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E5A35485D9248599C84B056 /* Resources */ = {
+		412990CAF30040D6A3B5E361 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DABC6223FC0E4EDBAE403931 /* Assets.xcassets in Resources */,
+				104A3BAA7D7946D2B6700388 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +339,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		76FE0A9F51CEC08A7E89BCC7 /* [Expo] Configure project */ = {
+		4877C04A6EC5CF9B1A15E570 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -392,7 +398,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spendy/Pods-spendy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D32CD44F7F773ADFEBA2F101 /* [CP] Embed Pods Frameworks */ = {
+		CCB70A69CFB636EF124F5313 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -422,25 +428,25 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				6C82F8C29BD946C9BE9C8E4D /* noop-file.swift in Sources */,
+				1798B7015F624F48B272BC49 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		14CA7B792BFF4F12B229488C /* Sources */ = {
+		4F23065B13BC4E0DBFE39E9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82CECEA4EBA346DEB402F5AD /* widget.swift in Sources */,
+				FED97532315A4EA39270F104 /* widget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		210C3E82FC9A4F1F9206E1B1 /* PBXTargetDependency */ = {
+		5981029F418742C19BBE40B3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FEE5444E364E405FBE40B952 /* widget */;
-			targetProxy = 3D94882E61474F1287DA230F /* PBXContainerItemProxy */;
+			target = CFB1C52D700347D2B0A64517 /* widget */;
+			targetProxy = 20F7B3BFBB4D4469939E9DE8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -449,6 +455,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C2E3173556A471DD304B334 /* Pods-spendy.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = spendy/spendy.entitlements;
@@ -482,6 +489,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A4D352CD337FB3A3BF06240 /* Pods-spendy.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = spendy/spendy.entitlements;
@@ -505,7 +513,7 @@
 			};
 			name = Release;
 		};
-		170EDA02C4F949B3A178FC7E /* Release */ = {
+		1437C030C0B74040AB2D527F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -517,9 +525,11 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = widget/widget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ABC123XYZ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -528,8 +538,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MARKETING_VERSION = 1.0.0;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulg129.spendy.widget;
@@ -537,53 +546,11 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
-		};
-		589F2EC36A3248F3A95D673D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = ABC123XYZ9;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = widget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = widget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulg129.spendy.widget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -632,7 +599,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -688,7 +655,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -703,6 +670,45 @@
 			};
 			name = Release;
 		};
+		970DBF86DDDB4277A4ADA0C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = widget/widget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ABC123XYZ9;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = widget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulg129.spendy.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -715,11 +721,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6AB8AB4AAB924121831581CA /* Build configuration list for PBXNativeTarget "widget" */ = {
+		6A4F41E46C904F799879FB8B /* Build configuration list for PBXNativeTarget "widget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				589F2EC36A3248F3A95D673D /* Debug */,
-				170EDA02C4F949B3A178FC7E /* Release */,
+				970DBF86DDDB4277A4ADA0C9 /* Debug */,
+				1437C030C0B74040AB2D527F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

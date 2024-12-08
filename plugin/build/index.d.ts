@@ -1,3 +1,11 @@
 import { ConfigPlugin } from '@expo/config-plugins';
-declare const withAppConfigs: ConfigPlugin<WithWidgetProps>;
+export interface Props {
+  widgetName: string;
+  ios: {
+    devTeamId: string;
+    appGroupIdentifier: string;
+    topLevelFiles?: string[];
+  };
+}
+declare const withAppConfigs: ConfigPlugin<Props>;
 export default withAppConfigs;

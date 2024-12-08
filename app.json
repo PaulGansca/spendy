@@ -33,8 +33,25 @@
     },
     "plugins": [
       "expo-router",
-      ["expo-build-properties", { "android": { "kotlinVersion": "1.8.22" } }],
-      ["./app.plugin", { "devTeamId": "ABC123XYZ9" }]
+      [
+        "expo-build-properties",
+        {
+          "android": { "kotlinVersion": "1.8.22" },
+          "ios": {
+            "deploymentTarget": "15.1"
+          }
+        }
+      ],
+      [
+        "./app.plugin",
+        {
+          "widgetName": "widget",
+          "ios": {
+            "devTeamId": "ABC123XYZ9",
+            "appGroupIdentifier": "group.com.paulg129.spendy.widget"
+          }
+        }
+      ]
     ]
   }
 }

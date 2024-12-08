@@ -7,7 +7,7 @@ const config_plugins_1 = require("@expo/config-plugins");
  * @param config
  * @returns
  */
-const withWidgetProjectBuildGradle = config => {
+const withWidgetProjectBuildGradle = (config) => {
     return (0, config_plugins_1.withProjectBuildGradle)(config, async (newConfig) => {
         const buildGradle = newConfig.modResults.contents;
         const search = /dependencies\s?{/;

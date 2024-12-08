@@ -7,12 +7,14 @@ const config_plugins_1 = require("@expo/config-plugins");
  * @param config
  * @returns
  */
-const withWidgetAppBuildGradle = config => {
+const withWidgetAppBuildGradle = (config) => {
     return (0, config_plugins_1.withAppBuildGradle)(config, async (newConfig) => {
         const buildGradle = newConfig.modResults.contents;
         const search = /(apply plugin: "com\.android\.application"\n)/gm;
         const replace = `$1apply plugin: "kotlin-android"\n`;
-        const newBuildGradle = buildGradle.replace(search, replace);
+        let newBuildGradle = buildGradle.replace(search, replace);
+        newBuildGradle = newBuildGradle.replace(/dependencies\s?{/, `dependencies {
+    implementation 'com.google.code.gson:gson:2.10.1'`);
         newConfig.modResults.contents = newBuildGradle;
         return newConfig;
     });

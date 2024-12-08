@@ -2,25 +2,34 @@ import {
   AndroidConfig,
   ConfigPlugin,
   withAndroidManifest,
-} from "@expo/config-plugins"
+} from "@expo/config-plugins";
 
-export const withWidgetManifest: ConfigPlugin = config => {
-  return withAndroidManifest(config, async newConfig => {
+export const withWidgetManifest: ConfigPlugin<{ widgetName: string }> = (
+  config,
+  { widgetName }
+) => {
+  return withAndroidManifest(config, async (newConfig) => {
     const mainApplication = AndroidConfig.Manifest.getMainApplicationOrThrow(
-      newConfig.modResults,
-    )
-    const widgetReceivers = await buildWidgetsReceivers()
-    mainApplication.receiver = widgetReceivers
+      newConfig.modResults
+    );
+    const widgetReceivers = await buildWidgetsReceivers(widgetName);
+    mainApplication.receiver = widgetReceivers;
 
-    return newConfig
-  })
-}
+    AndroidConfig.Manifest.addMetaDataItemToMainApplication(
+      mainApplication,
+      "WIDGET_NAME",
+      widgetName
+    );
 
-async function buildWidgetsReceivers() {
+    return newConfig;
+  });
+};
+
+async function buildWidgetsReceivers(widgetName: string) {
   return [
     {
       $: {
-        "android:name": ".SampleWidget",
+        "android:name": `.${widgetName}`,
         "android:exported": "false" as const,
       },
       "intent-filter": [
@@ -43,18 +52,5 @@ async function buildWidgetsReceivers() {
         },
       ],
     },
-  ]
-  /*
-    <receiver
-        android:name=".SampleWidget"
-        android:exported="false">
-        <intent-filter>
-            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-        </intent-filter>
-
-        <meta-data
-            android:name="android.appwidget.provider"
-            android:resource="@xml/sample_widget_info" />
-    </receiver>
-   */
+  ];
 }
